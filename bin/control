@@ -3,7 +3,7 @@
 # OrientDB init script
 
 # You have to SET the OrientDB installation directory here
-ORIENTDB_DIR="${OPENSHIFT_ORIENTDB_DIR}/1.7.4"
+ORIENTDB_DIR="${OPENSHIFT_ORIENTDB_DIR}/versions/1.7.4"
 ORIENTDB_USER="jelastic"
 
 usage() {
@@ -12,27 +12,25 @@ usage() {
 }
 
 start() {
-	status
-	if [ $PID -gt 0 ]
-	then
-		echo "OrientDB server daemon was already started. PID: $PID"
-		return $PID
-	fi
-	echo "Starting OrientDB server daemon..."
-	cd "$ORIENTDB_DIR/bin"
-	su $ORIENTDB_USER -c "cd \"$ORIENTDB_DIR/bin\"; /usr/bin/nohup ./server.sh 1>../log/orientdb.log 2>../log/orientdb.err &"
+        status
+        if [ $PID -gt 0 ]
+        then
+                echo "OrientDB server daemon was already started. PID: $PID"
+                return $PID
+        fi
+        echo "Starting OrientDB server daemon..."
+        cd $ORIENTDB_DIR/bin && /usr/bin/nohup ./server.sh 1>${OPENSHIFT_ORIENTDB_LOG_DIR}/orientdb.log 2>${OPENSHIFT_ORIENTDB_LOG_DIR}/orientdb.err &
 }
 
 stop() {
-	status
-	if [ $PID -eq 0 ]
-	then
-		echo "OrientDB server daemon is already not running"
-		return 0
-	fi
-	echo "Stopping OrientDB server daemon..."
-	cd "$ORIENTDB_DIR/bin"
-	su $ORIENTDB_USER -c "cd \"$ORIENTDB_DIR/bin\"; /usr/bin/nohup ./shutdown.sh 1>>../log/orientdb.log 2>>../log/orientdb.err &"
+        status
+        if [ $PID -eq 0 ]
+        then
+                echo "OrientDB server daemon is already not running"
+                return 0
+        fi
+        echo "Stopping OrientDB server daemon..."
+        cd $ORIENTDB_DIR/bin && /usr/bin/nohup ./shutdown.sh 1>>${OPENSHIFT_ORIENTDB_LOG_DIR}/orientdb.log 2>>${OPENSHIFT_ORIENTDB_LOG_DIR}/orientdb.err &
 }
 
 status() {
