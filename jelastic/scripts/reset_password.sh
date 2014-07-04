@@ -11,6 +11,7 @@ SED=$(which sed);
 J_OPENSHIFT_APP_ADM_USER="root";
 
 function _setPassword() {
+    return 0;
     ORIENTDB_SERVER_PROP_FILE="${OPENSHIFT_ORIENTDB_DIR}/versions/1.7.4/config/orientdb-server-config.xml";
     service cartridge stop &
     sleep 5s && pkill java;
