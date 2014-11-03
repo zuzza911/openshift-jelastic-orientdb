@@ -5,6 +5,8 @@ This cartridge provides [OrientDB](http://www.orientechnologies.com/orientdb/) o
 
 OrientDB is incredibly fast: it can store up to 150,000 records per second on common hardware. In addition, this database supports schema-less, schema-full and schema-mixed modes. It also has a strong security profiling system based on users and roles and supports SQL as a query language. 
 
+For more details refer to the [Jelastic documentation](http://docs.jelastic.com/orientdb).
+
 Follow the [link](http://ops-docs.jelastic.com/private-add-cartridge) in order to find out how to enable the current cartridge at Jelastic dashboard.
 
 ### What Jelastic cartridge is?
