@@ -48,6 +48,9 @@ Endpoints:
   - Private-IP-Name:   DB_HOST
     Private-Port-Name: DB_PORT
     Private-Port:      2424
+  - Private-IP-Name:   DB_REPLIC_HOST
+    Private-Port-Name: DB_REPLIC_PORT
+    Private-Port:      2434
   - Private-IP-Name:   DB_HOST_WEB
     Private-Port-Name: DB_PORT_WEB
     Private-Port:      8080  
